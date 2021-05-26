@@ -10,5 +10,7 @@ namespace RepositoryLayer.Interfaces
     public interface ICartRepo
     {
         Cart AddToCart(Cart cartModel);
+        bool RemoveFromCart(int cartId);
+
     }
 }

@@ -20,6 +20,10 @@ namespace ManagerLayer.Managers
         {
             return this.cartRepo.AddToCart(cartModel);
         }
+        public bool RemoveFromCart(int cartId)
+        {
+            return this.cartRepo.RemoveFromCart(cartId);
+        }
 
     }
 }
