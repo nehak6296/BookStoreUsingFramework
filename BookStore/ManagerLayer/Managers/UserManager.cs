@@ -17,7 +17,12 @@ namespace ManagerLayer.Managers
         {
             this.userRepo = userRepo;
         }
-        
+
+        public bool LoginUser(Login loginModel)
+        {
+            return this.userRepo.LoginUser(loginModel);
+        }
+
         public Registration RegisterUser(Registration registrationModel)
         {
             return this.userRepo.RegisterUser(registrationModel);

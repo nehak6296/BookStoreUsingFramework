@@ -10,6 +10,6 @@ namespace RepositoryLayer.Interfaces
     public interface IUserRepo
     {
         Registration RegisterUser(Registration registrationModel);
-
+        bool LoginUser(Login loginModel);
     }
 }

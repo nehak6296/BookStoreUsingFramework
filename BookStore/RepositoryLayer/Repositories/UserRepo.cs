@@ -53,5 +53,32 @@ namespace RepositoryLayer.Repositories
             }
         }
 
+        public bool LoginUser(Login loginModel)
+        {
+            try
+            {
+                Connection();
+                SqlCommand cmd = new SqlCommand("sp_LoginUser", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Email", loginModel.Email);
+                cmd.Parameters.AddWithValue("@Password", loginModel.Password);
+
+                connection.Open();
+                int i = cmd.ExecuteNonQuery();
+                connection.Close();
+                if (i >= 1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

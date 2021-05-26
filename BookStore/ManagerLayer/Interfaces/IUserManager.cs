@@ -10,6 +10,8 @@ namespace ManagerLayer.Interfaces
     public interface IUserManager
     {
         Registration RegisterUser(Registration registrationModel);
+        bool LoginUser(Login loginModel);
+
 
     }
 }
