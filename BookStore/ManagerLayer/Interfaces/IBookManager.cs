@@ -10,6 +10,9 @@ namespace ManagerLayer.Interfaces
     public interface IBookManager
     {
         Books AddBook(Books booksModel);
+        Books UpdateBook(Books booksModel);
+        bool DeleteBook(int bookId);
+        List<Books> GetAllBooks();
 
     }
 }

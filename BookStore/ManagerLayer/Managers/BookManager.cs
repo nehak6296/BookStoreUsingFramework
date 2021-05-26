@@ -20,5 +20,19 @@ namespace ManagerLayer.Managers
         {
             return this.bookRepository.AddBook(booksModel);
         }
+        public bool DeleteBook(int bookId)
+        {
+            return this.bookRepository.DeleteBook(bookId);
+        }
+
+        public List<Books> GetAllBooks()
+        {
+            return this.bookRepository.GetAllBooks();
+        }
+
+        public Books UpdateBook(Books booksModel)
+        {
+            return this.bookRepository.UpdateBook(booksModel);
+        }
     }
 }

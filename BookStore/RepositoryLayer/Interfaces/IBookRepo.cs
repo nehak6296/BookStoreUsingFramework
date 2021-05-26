@@ -10,6 +10,10 @@ namespace RepositoryLayer.Interfaces
     public interface IBookRepo
     {
         Books AddBook(Books booksModel);
+        Books UpdateBook(Books booksModel);
+        bool DeleteBook(int bookId);
+
+        List<Books> GetAllBooks();
 
     }
 }
