@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBookManager.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
+    <Compile Include="Managers\BookManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

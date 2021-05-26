@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBookRepo.cs" />
     <Compile Include="Interfaces\IUserRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BookRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
