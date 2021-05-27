@@ -31,8 +31,6 @@ namespace RepositoryLayer.Repositories
                 cmd.Parameters.AddWithValue("@BookId", wishList.BookId);
                 cmd.Parameters.AddWithValue("@UserId", wishList.UserId);
                 cmd.Parameters.AddWithValue("@WishListQuantity", wishList.WishListQuantity);
-                cmd.Parameters.AddWithValue("@IsWishListed", wishList.IsWishListed);
-
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
@@ -76,6 +74,32 @@ namespace RepositoryLayer.Repositories
             {
                 connection.Close();
             }
+        }
+
+        public List<WishList> GetWishList()
+        {
+            Connection();
+            List<WishList> wishList = new List<WishList>();
+            SqlCommand cmd = new SqlCommand("sp_GetAllWishList", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            connection.Open();
+            da.Fill(dt);
+            connection.Close();
+            //Bind WishListModel generic list using dataRow     
+            foreach (DataRow dr in dt.Rows)
+            {
+                wishList.Add(
+                    new WishList
+                    {
+                        BookId = Convert.ToInt32(dr["bookId"]),
+                        UserId = Convert.ToInt32(dr["userId"]),
+                        WishListQuantity = Convert.ToInt32(dr["wishListQuantity"])
+                    }
+                    );
+            }
+            return wishList;
         }
     }
 }

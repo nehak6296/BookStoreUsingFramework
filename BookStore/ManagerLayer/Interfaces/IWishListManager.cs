@@ -10,8 +10,7 @@ namespace ManagerLayer.Interfaces
     public interface IWishListManager
     {
         WishList AddToWishList(WishList wishList);
-
         int RemoveFromWishList(int userId,int WishListId);
-
+        List<WishList> GetWishList();
     }
 }

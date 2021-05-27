@@ -14,7 +14,5 @@ namespace ModelsLayer
         public int UserId { get; set; }
         public int BookId { get; set; }
         public int WishListQuantity { get; set; }
-        public bool IsWishListed { get; set; }
-
     }
 }
