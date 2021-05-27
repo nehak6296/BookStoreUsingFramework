@@ -45,10 +45,12 @@
     <Compile Include="Interfaces\IBookRepo.cs" />
     <Compile Include="Interfaces\ICartRepo.cs" />
     <Compile Include="Interfaces\IUserRepo.cs" />
+    <Compile Include="Interfaces\IWishListRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookRepo.cs" />
     <Compile Include="Repositories\CartRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
+    <Compile Include="Repositories\WishListRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj">
