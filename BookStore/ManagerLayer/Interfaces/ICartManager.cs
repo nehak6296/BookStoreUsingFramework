@@ -10,7 +10,8 @@ namespace ManagerLayer.Interfaces
     public interface ICartManager
     {
         Cart AddToCart(Cart cartModel);
-        bool RemoveFromCart(int cartId);
+        bool RemoveFromCart(int cartId,int userId);
+        List<Cart> GetAllCart();
 
     }
 }

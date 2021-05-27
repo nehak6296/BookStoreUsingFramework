@@ -50,7 +50,7 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public bool RemoveFromCart(int cartId)
+        public bool RemoveFromCart(int cartId, int userId)
         {
             try
             {
@@ -58,6 +58,7 @@ namespace RepositoryLayer.Repositories
                 SqlCommand cmd = new SqlCommand("sp_RemoveFromCart", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@CartId", cartId);
+                cmd.Parameters.AddWithValue("@UserId", userId);
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
@@ -74,6 +75,32 @@ namespace RepositoryLayer.Repositories
             {
                 connection.Close();
             }
+        }
+
+        public List<Cart> GetAllCart()
+        {
+            Connection();
+            List<Cart> CartList = new List<Cart>();
+            SqlCommand cmd = new SqlCommand("sp_GetAllCart", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            connection.Open();
+            da.Fill(dt);
+            connection.Close();
+            //Bind CartModel generic list using dataRow     
+            foreach (DataRow dr in dt.Rows)
+            {
+                CartList.Add(
+                    new Cart
+                    {
+                        BookId = Convert.ToInt32(dr["bookId"]),
+                        UserId = Convert.ToInt32(dr["userId"]),
+                        CartBookQuantity = Convert.ToInt32(dr["cartBookQuantity"])                       
+                    }
+                    );
+            }
+            return CartList;
         }
     }
 }
