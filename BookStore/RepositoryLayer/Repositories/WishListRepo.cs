@@ -51,6 +51,31 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-       
+        public int RemoveFromWishList(int userId, int wishListId)
+        {
+            try
+            {
+                Connection();
+                SqlCommand cmd = new SqlCommand("sp_RemoveFromWishList", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BookId", wishListId);
+                cmd.Parameters.AddWithValue("@UserId", userId);               
+                connection.Open();
+                int i = cmd.ExecuteNonQuery();
+                connection.Close();
+                if (i >= 1)
+                    return wishListId;
+                else
+                    return 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

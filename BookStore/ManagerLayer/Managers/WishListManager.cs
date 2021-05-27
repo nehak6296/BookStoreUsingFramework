@@ -14,7 +14,13 @@ namespace ManagerLayer.Managers
         private readonly IWishListRepo wishListRepo;
         public WishList AddToWishList(WishList wishList)
         {
-            throw new NotImplementedException();
+            return this.wishListRepo.AddToWishList(wishList);
+        }
+
+        public int RemoveFromWishList(int userId, int wishListId)
+        {
+            return this.wishListRepo.RemoveFromWishList(userId, wishListId);
+
         }
     }
 }
