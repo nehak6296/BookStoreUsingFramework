@@ -113,6 +113,31 @@ namespace RepositoryLayer.Repositories
                 connection.Close();
             }
         }
+
+        public Customer GetAllCustomerDetails(Customer customer)
+        {
+            Connection();
+            List<Customer> customerList = new List<Customer>();
+            SqlCommand cmd = new SqlCommand("sp_GetAllCustomerDetails", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            connection.Open();
+            da.Fill(dt);
+            connection.Close();
+            //Bind CustomerModel generic list using dataRow     
+            foreach (DataRow dr in dt.Rows)
+            {
+                customerList.Add(
+                    new Customer
+                    {
+                        CustomerId = Convert.ToInt32(dr["customerId"]),
+                        UserId = Convert.ToInt32(dr["userId"])                        
+                    }
+                    );
+            }
+            return customer;
+        }
     }
 }
 

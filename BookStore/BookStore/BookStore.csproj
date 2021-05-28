@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,6 +163,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -179,6 +181,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ManagerLayer\ManagerLayer.csproj">
+      <Project>{DCAF23EB-A1A3-4A3C-B483-FE1BD11A41FC}</Project>
+      <Name>ManagerLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj">
+      <Project>{D75FFE63-766B-439C-B282-3507A21803B9}</Project>
+      <Name>ModelsLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj">
+      <Project>{81E69657-880E-48C4-A394-F7B18DDE8D9D}</Project>
+      <Name>RepositoryLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

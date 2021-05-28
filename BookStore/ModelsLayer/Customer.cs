@@ -11,6 +11,7 @@ namespace ModelsLayer
     {
         [Key]
         public int CustomerId { get; set; }
+        public int UserId { get; set; }
         public string Name { get; set; }
         public int PhoneNumber { get; set; }
         public string Address { get; set; }
