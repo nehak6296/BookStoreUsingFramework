@@ -10,7 +10,7 @@ namespace ModelsLayer
     public class Orders
     {
         [Key]
-        public int OderId { get; set; }
+        public int OrderId { get; set; }
         public int UserId { get; set; }
         public int CartId { get; set; }
     }

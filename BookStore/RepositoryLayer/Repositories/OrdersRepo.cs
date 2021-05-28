@@ -46,5 +46,37 @@ namespace RepositoryLayer.Repositories
                 connection.Close();
             }
         }
+
+        public Orders GetAllOrders(Orders orders)
+        {
+            try
+            {
+                Connection();
+                List<Orders> ordersList = new List<Orders>();
+                SqlCommand cmd = new SqlCommand("sp_GetAllCustomerDetails", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                connection.Open();
+                da.Fill(dt);
+                connection.Close();
+                //Bind OrdersModel generic list using dataRow     
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ordersList.Add(
+                        new Orders
+                        {
+                            OrderId = Convert.ToInt32(dr["orderId"]),
+                            UserId = Convert.ToInt32(dr["userId"])
+                        }
+                        );
+                }
+                return orders;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

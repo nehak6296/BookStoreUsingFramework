@@ -10,5 +10,6 @@ namespace ManagerLayer.Interfaces
     public interface IOrdersManager
     {
         int PlaceOrder(int UserId,int CartId);
+        Orders GetAllOrders(Orders orders);
     }
 }

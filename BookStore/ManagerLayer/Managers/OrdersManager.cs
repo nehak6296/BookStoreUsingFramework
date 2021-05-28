@@ -20,5 +20,9 @@ namespace ManagerLayer.Managers
         {
             return this.ordersRepo.PlaceOrder(UserId,CartId);
         }
+        public Orders GetAllOrders(Orders orders)
+        {
+            return this.ordersRepo.GetAllOrders(orders);
+        }
     }
 }
