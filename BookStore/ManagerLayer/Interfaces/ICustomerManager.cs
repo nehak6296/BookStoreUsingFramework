@@ -10,5 +10,6 @@ namespace ManagerLayer.Interfaces
     public interface ICustomerManager
     {
         Customer AddCustomerDetails(Customer customer);
+        int DeleteCustomer(int UserId, int CustomerId);
     }
 }

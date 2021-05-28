@@ -16,5 +16,10 @@ namespace ManagerLayer.Managers
         {
             return this.customerRepo.AddCustomerDetails(customer);
         }
+
+        public int DeleteCustomer(int UserId, int CustomerId)
+        {
+            return this.customerRepo.DeleteCustomer(UserId,CustomerId);
+        }
     }
 }

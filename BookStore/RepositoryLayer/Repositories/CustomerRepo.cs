@@ -53,6 +53,33 @@ namespace RepositoryLayer.Repositories
                 connection.Close();
             }
         }
+
+        public int DeleteCustomer(int userId, int customerId)
+        {
+            try
+            {
+                Connection();
+                SqlCommand cmd = new SqlCommand("sp_DeleteCustomer", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CustomerId", customerId);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                connection.Open();
+                int i = cmd.ExecuteNonQuery();
+                connection.Close();
+                if (i >= 1)
+                    return customerId;
+                else
+                    return 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
 
