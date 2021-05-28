@@ -11,5 +11,6 @@ namespace RepositoryLayer.Interfaces
     {
         Customer AddCustomerDetails(Customer customer);
         int DeleteCustomer(int userId, int customerId);
+        Customer UpdateCustomerDetails(Customer customer);
     }
 }

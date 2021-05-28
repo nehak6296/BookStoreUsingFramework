@@ -21,5 +21,10 @@ namespace ManagerLayer.Managers
         {
             return this.customerRepo.DeleteCustomer(UserId,CustomerId);
         }
+
+        public Customer UpdateCustomerDetails(Customer customer)
+        {
+            return this.customerRepo.UpdateCustomerDetails(customer);
+        }
     }
 }

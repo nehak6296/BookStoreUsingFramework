@@ -11,5 +11,6 @@ namespace ManagerLayer.Interfaces
     {
         Customer AddCustomerDetails(Customer customer);
         int DeleteCustomer(int UserId, int CustomerId);
+        Customer UpdateCustomerDetails(Customer customer);
     }
 }
