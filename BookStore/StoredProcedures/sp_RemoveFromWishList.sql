@@ -1,12 +1,11 @@
-
-alter procedure [sp_RemoveFromCart](
-	@CartId int	
+Create procedure [dbo].[sp_RemoveFromWishList](
+	@WishListId int	
 )
 as
 begin	
 	begin try
-		if exists(select CartId from [Cart] where CartId=@CartId)
-		delete from Cart where CartId=@CartId
+		if exists(select WishListId from [WishList] where WishListId=@WishListId)
+		delete from WishList where WishListId=@WishListId
 	end try
 	begin catch
 		 SELECT

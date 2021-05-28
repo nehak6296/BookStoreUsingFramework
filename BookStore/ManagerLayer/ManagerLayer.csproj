@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="Interfaces\IBookManager.cs" />
     <Compile Include="Interfaces\ICartManager.cs" />
+    <Compile Include="Interfaces\ICustomerManager.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Interfaces\IWishListManager.cs" />
     <Compile Include="Managers\BookManager.cs" />
     <Compile Include="Managers\CartManager.cs" />
+    <Compile Include="Managers\CustomerManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Managers\WishListManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

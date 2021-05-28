@@ -1,12 +1,11 @@
-
-alter procedure [sp_RemoveFromCart](
-	@CartId int	
+Create procedure [dbo].[sp_DeleteCustomer](
+	@CustomerId int	
 )
 as
 begin	
 	begin try
-		if exists(select CartId from [Cart] where CartId=@CartId)
-		delete from Cart where CartId=@CartId
+		if exists(select CustomerId from [Customer] where CustomerId=@CustomerId)
+		delete from [Customer] where CustomerId=@CustomerId
 	end try
 	begin catch
 		 SELECT
