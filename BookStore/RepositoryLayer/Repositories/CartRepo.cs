@@ -18,7 +18,7 @@ namespace RepositoryLayer.Repositories
         //To Handle connection related activities    
         private void Connection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ToString();
+            string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ConnectionString;
             connection = new SqlConnection(connectionString);
 
         }
@@ -34,7 +34,7 @@ namespace RepositoryLayer.Repositories
                 cmd.Parameters.AddWithValue("@CartBookQuantity", cartModel.CartBookQuantity);
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
-                connection.Close();
+               
                 if (i >= 1)
                     return cartModel;
                 else
@@ -77,25 +77,30 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public List<Cart> GetAllCart()
+        public List<GetCart> GetCart(int userId)
         {
             Connection();
-            List<Cart> CartList = new List<Cart>();
+            List<GetCart> CartList = new List<GetCart>();
             SqlCommand cmd = new SqlCommand("sp_GetAllCart", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId", userId);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             connection.Open();
-            da.Fill(dt);
-            connection.Close();
+            da.Fill(dt);           
             //Bind CartModel generic list using dataRow     
             foreach (DataRow dr in dt.Rows)
             {
                 CartList.Add(
-                    new Cart
+                    new GetCart
                     {
-                        BookId = Convert.ToInt32(dr["bookId"]),
-                        UserId = Convert.ToInt32(dr["userId"]),
+                        UserId = userId,
+                        CartId = Convert.ToInt32(dr["CartId"]),
+                        BookId = Convert.ToInt32(dr["BookId"]),
+                        BookName=Convert.ToString(dr["BookName"]),
+                        Author=Convert.ToString(dr["Author"]),
+                        Price=Convert.ToInt32(dr["Price"]),
+                        Image=Convert.ToString(dr["Image"]),                                               
                         CartBookQuantity = Convert.ToInt32(dr["cartBookQuantity"])                       
                     }
                     );

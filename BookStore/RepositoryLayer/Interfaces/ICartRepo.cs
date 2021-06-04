@@ -11,6 +11,6 @@ namespace RepositoryLayer.Interfaces
     {
         Cart AddToCart(Cart cartModel);
         bool RemoveFromCart(int cartId, int userId);
-        List<Cart> GetAllCart();
+        List<GetCart> GetCart(int userId);
     }
 }

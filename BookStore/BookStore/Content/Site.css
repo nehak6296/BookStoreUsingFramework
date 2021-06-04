@@ -22,3 +22,99 @@ select,
 textarea {
     max-width: 280px;
 }
+/*.title_Layout {
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+*/
+
+
+.box {
+    text-align: center;
+    background: #800000;
+    opacity: 1;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    height: 55px;
+}
+
+.text1 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    float: left;
+    flex-wrap: wrap;
+    margin-left: 200px;
+    color: white;
+    padding-top: 5px;
+}
+
+.text2 {
+    font-family: 'Poppins', sans-serif;
+    float: right;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-right: 180px;
+    color: white;
+    padding-top: 10px;
+}
+
+.card_getbooks {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30%;
+    margin-right: 16px;
+    margin-top: 10px;
+}
+
+    .card_getbooks:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+.container_getbooks {
+    padding: 15px 16px;
+}
+
+.card_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.getbook_field {
+    padding: 2px 5px;
+}
+
+.text_size {
+    font-size: 10px;
+    color: gray;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 10px;
+    padding-left: 0px;
+    font-size: 10px;
+
+}
+.btn-wishlist {
+    color: black;
+    width: 100%;
+    background-color: white;
+    border-color: lightgray;
+    height: 25px
+}
+.btn-primary{
+    display:none;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #841e1c;
+    width: 90px;
+    height: 25px;
+}
+

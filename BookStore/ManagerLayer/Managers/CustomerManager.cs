@@ -1,6 +1,7 @@
 ﻿using ManagerLayer.Interfaces;
 using ModelsLayer;
 using RepositoryLayer.Interfaces;
+using RepositoryLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ManagerLayer.Managers
 {
     public class CustomerManager : ICustomerManager
     {
-        private readonly ICustomerRepo customerRepo;
+        private readonly ICustomerRepo customerRepo = new CustomerRepo();
         public Customer AddCustomerDetails(Customer customer)
         {
             return this.customerRepo.AddCustomerDetails(customer);

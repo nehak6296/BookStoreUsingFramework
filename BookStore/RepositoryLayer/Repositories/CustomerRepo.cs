@@ -17,7 +17,7 @@ namespace RepositoryLayer.Repositories
         //To Handle connection related activities    
         private void Connection()
             {
-        string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ToString();
+        string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ConnectionString;
         connection = new SqlConnection(connectionString);
 
         }

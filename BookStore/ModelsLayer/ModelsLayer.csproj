@@ -45,6 +45,7 @@
     <Compile Include="Books.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="GetCart.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Registration.cs" />

@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<ModelsLayer.GetCart>
+
+<div>
+    <div class="box">
+        <h2 class="text1">Bookstore</h2>
+    </div>
+    <div class="card">
+        <div class="cart_container">
+            <h1>My Cart(1)</h1>
+            @foreach (var items in Model)
+            {
+                <div class="card_getcart">
+                    <div>
+                        <div class="getcart_field">
+                            @items.Image
+                        </div>
+                    </div>
+                    <div class="container_getcart">
+                        <div class="getcart_field">
+                            @items.BookName
+                        </div>
+                        <div class="getcart_field text_size">
+                            By @items.Author
+                        </div>
+                        <div class="getcart_field">
+                            Rs.@items.Price
+                        </div>
+                        <div>
+                            <button onclick="decrement()">-</button>
+                            <input id=demoInput type=number min=0 max=10>
+                            <button onclick="increment()">+</button>
+                        </div>
+                    </div>
+                </div>
+            }
+            <input type="button" value="PLACE ORDER" class="place-btn">
+        </div>
+    </div>
+    <div class="customer_container">
+        <h1>Customer details</h1>
+        <form>
+            <div class="name"></div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function increment() {
+        document.getElementById('demoInput').stepUp();
+    }
+    function decrement() {
+        document.getElementById('demoInput').stepDown();
+    }
+</script>
+

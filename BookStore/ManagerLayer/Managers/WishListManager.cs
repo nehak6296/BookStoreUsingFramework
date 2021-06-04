@@ -1,6 +1,7 @@
 ﻿using ManagerLayer.Interfaces;
 using ModelsLayer;
 using RepositoryLayer.Interfaces;
+using RepositoryLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ManagerLayer.Managers
 {
     public class WishListManager : IWishListManager
     {
-        private readonly IWishListRepo wishListRepo;
+        private readonly IWishListRepo wishListRepo = new WishListRepo();
         public WishList AddToWishList(WishList wishList)
         {
             return this.wishListRepo.AddToWishList(wishList);

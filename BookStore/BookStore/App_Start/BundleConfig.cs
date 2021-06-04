@@ -24,7 +24,11 @@ namespace BookStore
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/GetCart.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                     "~/Scripts/custom/Book.js"));
         }
     }
 }

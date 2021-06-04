@@ -18,6 +18,16 @@ namespace BookStore
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "User", action = "Register", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Default1",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Books", action = "GetAllBooks", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+               name: "Default2",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Cart", action = "GetCart", id = UrlParameter.Optional }
+           );
         }
     }
 }

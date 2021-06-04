@@ -7,12 +7,12 @@
 <h2>Register</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Registration</h4>
+      
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -49,14 +49,18 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Register" class="btn btn-default" />
+                <input type="submit" value="Register" class="btn btn-default"  />
+                @*<input type="submit" value="Register" class="btn btn-default" onclick="window.location.href='https://localhost:44375/Book/GetAllBooks'" class="btn btn-primary" />*@
             </div>
         </div>
+        @if (@ViewBag.Message != null)
+        { // Injecting JavaScript here }
+            <h4>@ViewBag.Message</h4>
+        }
     </div>
 }
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Login Page", "Login")
 </div>
 
 @section Scripts {

@@ -1,6 +1,7 @@
 ﻿using ManagerLayer.Interfaces;
 using ModelsLayer;
 using RepositoryLayer.Interfaces;
+using RepositoryLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,19 @@ namespace ManagerLayer.Managers
 {
     public class CartManager : ICartManager
     {
-        private readonly ICartRepo cartRepo;
-        public CartManager(ICartRepo cartRepo)
-        {
-            this.cartRepo = cartRepo;
-        }
+        private readonly ICartRepo cartRepo = new CartRepo();
+        //public CartManager(ICartRepo cartRepo)
+        //{
+        //    this.cartRepo = cartRepo;
+        //}
         public Cart AddToCart(Cart cartModel)
         {
             return this.cartRepo.AddToCart(cartModel);
         }
 
-        public List<Cart> GetAllCart()
+        public List<GetCart> GetCart(int userId)
         {
-            return this.cartRepo.GetAllCart();
+            return this.cartRepo.GetCart(userId);
         }
 
         public bool RemoveFromCart(int cartId, int userId)

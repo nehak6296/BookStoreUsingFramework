@@ -17,7 +17,7 @@ namespace RepositoryLayer.Repositories
         //To Handle connection related activities    
         private void Connection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ToString();
+            string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ConnectionString;
             connection = new SqlConnection(connectionString);
         }
 
@@ -32,6 +32,8 @@ namespace RepositoryLayer.Repositories
                 cmd.Parameters.AddWithValue("@Author", booksModel.Author);
                 cmd.Parameters.AddWithValue("@Details", booksModel.Details);
                 cmd.Parameters.AddWithValue("@Price", booksModel.Price);
+                cmd.Parameters.AddWithValue("@Quantity", booksModel.Quantity);
+
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
@@ -60,6 +62,8 @@ namespace RepositoryLayer.Repositories
                 cmd.Parameters.AddWithValue("@Author", booksModel.Author);
                 cmd.Parameters.AddWithValue("@Details", booksModel.Details);
                 cmd.Parameters.AddWithValue("@Price", booksModel.Price);
+                cmd.Parameters.AddWithValue("@Quantity", booksModel.Quantity);
+
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
@@ -106,30 +110,42 @@ namespace RepositoryLayer.Repositories
 
         public List<Books> GetAllBooks()
         {
-            Connection();
-            List<Books> BookList = new List<Books>();
-            SqlCommand cmd = new SqlCommand("sp_GetAllBooks", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            connection.Open();
-            da.Fill(dt);
-            connection.Close();
-            //Bind EmpModel generic list using dataRow     
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                BookList.Add(
-                    new Books
-                    {
-                        // BookId = Convert.ToInt32(dr["Id"]),
-                        BookName = Convert.ToString(dr["Name"]),
-                        Author = Convert.ToString(dr["City"]),
-                        Details = Convert.ToString(dr["Address"]),
-                        Price = Convert.ToDouble(dr["Price"])
-                    }
-                    );
+                Connection();
+                List<Books> BookList = new List<Books>();
+                SqlCommand cmd = new SqlCommand("sp_GetAllBooks", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                connection.Open();
+                da.Fill(dt);
+                connection.Close();
+                //Bind EmpModel generic list using dataRow     
+                foreach (DataRow dr in dt.Rows)
+                {
+                    BookList.Add(
+                        new Books
+                        {
+                            BookId = Convert.ToInt32(dr["BookId"]),
+                            BookName = Convert.ToString(dr["BookName"]),
+                            Author = Convert.ToString(dr["Author"]),
+                            Details = Convert.ToString(dr["Details"]),
+                            Price = Convert.ToDouble(dr["Price"]),
+                            Quantity = Convert.ToInt32(dr["Quantity"])
+                        }
+                        );
+                }
+                return BookList;
             }
-            return BookList;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
     }
