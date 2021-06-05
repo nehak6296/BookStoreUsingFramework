@@ -44,9 +44,10 @@ namespace BookStore.Controllers
                     return Json(new { status = false, Message = "Book not added to wishList", Data = result });
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return ViewBag.Message = "sucessfully";
+                throw new Exception(ex.Message);
+               //return ViewBag.Message = "sucessfully";
             }
         }
 

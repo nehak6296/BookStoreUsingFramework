@@ -30,10 +30,10 @@ namespace RepositoryLayer.Repositories
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@BookId", wishList.BookId);
                 cmd.Parameters.AddWithValue("@UserId", wishList.UserId);
-                cmd.Parameters.AddWithValue("@WishListQuantity", wishList.WishListQuantity);
+                cmd.Parameters.AddWithValue("@Quantity", wishList.WishListQuantity);
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
-                connection.Close();
+                //connection.Close();
                 if (i >= 1)
                     return wishList;
                 else
