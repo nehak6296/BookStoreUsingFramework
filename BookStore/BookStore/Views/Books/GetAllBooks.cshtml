@@ -3,14 +3,14 @@
 <div>
     <div class="box">
         <script src="~/Scripts/custom/Book.js"></script>
-        <h2 class="text1">Bookstore</h2>       
+        <h2 class="text1">Bookstore</h2>
         <h4 class="text2">Cart</h4>
     </div>
     <h2>Booklist</h2>
     <div class="container card_container">
 
         @foreach (var items in Model)
-         {
+        {
             <div class="card_getbooks">
                 <div class="container_getbooks">
                     <div class="getbook_field">
@@ -36,12 +36,13 @@
                 </div>
             </div>
 
-         }
+        }
     </div>
 </div>
+<div>
+    <a href="https://localhost:44375/Cart/GetCart">Cart</a>
+     </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
-
 }

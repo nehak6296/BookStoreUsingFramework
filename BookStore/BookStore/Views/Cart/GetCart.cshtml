@@ -26,12 +26,14 @@
                         </div>
                     </div>
                 </div>
+
+        <div class="quantity">
+            <button class="decrease" onclick="decrement()">-</button>
+            <input id=demoInput type=number min=0 max=50>
+            <button class="increase" onclick="increment()">+</button>
+            <input type="button" value="Remove" id="remove-@items.CartId" onclick="Remove_Cart(@items.CartId)">
+        </div> 
             }
-            <div class="quantity">
-                <button class="decrease" onclick="decrement()">-</button>
-                <input id=demoInput type=number min=0 max=50>
-                <button class="increase" onclick="increment()">+</button>
-            </div>
             <input type="button" value="PLACE ORDER" id="placeid" class="place-btn" onclick="place_order()">
         </div>
         <div class="cart_container">

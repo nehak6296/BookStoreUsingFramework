@@ -16,7 +16,7 @@ h1 {
     color: black;
 }
 
-.place-btn {
+#placeid {
     cursor: pointer;
     color: white;
     background-color: #2877d3;
@@ -53,6 +53,9 @@ h1 {
 .quantity {
     padding-top: 10px;
     padding-left: 5px;
+}
+#remove {
+    font-size: 50%;
 }
 
 h3 {

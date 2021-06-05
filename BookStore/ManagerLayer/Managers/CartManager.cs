@@ -27,9 +27,9 @@ namespace ManagerLayer.Managers
             return this.cartRepo.GetCart();
         }
 
-        public bool RemoveFromCart(int cartId, int userId)
+        public int RemoveFromCart(int cartId)
         {
-            return this.cartRepo.RemoveFromCart(cartId,userId);
+            return this.cartRepo.RemoveFromCart(cartId);
         }
 
     }

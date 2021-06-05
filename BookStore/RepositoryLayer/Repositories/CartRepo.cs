@@ -50,7 +50,7 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public bool RemoveFromCart(int cartId, int userId)
+        public int RemoveFromCart(int cartId)
         {
             try
             {
@@ -58,14 +58,14 @@ namespace RepositoryLayer.Repositories
                 SqlCommand cmd = new SqlCommand("sp_RemoveFromCart", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@CartId", cartId);
-                cmd.Parameters.AddWithValue("@UserId", userId);
+               // cmd.Parameters.AddWithValue("@UserId", userId);
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
                 if (i >= 1)
-                    return true;
+                    return 1;
                 else
-                    return false;
+                    return 0;
             }
             catch (Exception ex)
             {
