@@ -77,13 +77,13 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public List<GetCart> GetCart(int userId)
+        public List<GetCart> GetCart()
         {
             Connection();
             List<GetCart> CartList = new List<GetCart>();
             SqlCommand cmd = new SqlCommand("sp_GetAllCart", connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserId", userId);
+            cmd.Parameters.AddWithValue("@UserId", 1);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             connection.Open();
@@ -93,8 +93,7 @@ namespace RepositoryLayer.Repositories
             {
                 CartList.Add(
                     new GetCart
-                    {
-                        UserId = userId,
+                    {                        
                         CartId = Convert.ToInt32(dr["CartId"]),
                         BookId = Convert.ToInt32(dr["BookId"]),
                         BookName=Convert.ToString(dr["BookName"]),

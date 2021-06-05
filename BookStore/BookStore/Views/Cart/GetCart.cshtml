@@ -11,10 +11,8 @@
             @foreach (var items in Model)
             {
                 <div class="card_getcart">
-                    <div>
-                        <div class="getcart_field">
-                            @items.Image
-                        </div>
+                    <div class="getcart_field">
+                        @items.Image
                     </div>
                     <div class="container_getcart">
                         <div class="getcart_field">
@@ -26,35 +24,72 @@
                         <div class="getcart_field">
                             Rs.@items.Price
                         </div>
-                        <div>
-                            <button onclick="decrement()">-</button>
-                            <input id=demoInput type=number min=0 max=10>
-                            <button onclick="increment()">+</button>
-                        </div>
                     </div>
                 </div>
             }
-            <input type="button" value="PLACE ORDER" class="place-btn">
+            <div class="quantity">
+                <button class="decrease" onclick="decrement()">-</button>
+                <input id=demoInput type=number min=0 max=50>
+                <button class="increase" onclick="increment()">+</button>
+            </div>
+            <input type="button" value="PLACE ORDER" id="placeid" class="place-btn" onclick="place_order()">
+        </div>
+        <div class="cart_container">
+            <div class="customer">
+                <h3>Customer Details</h3>
+                <div id="form-div-cart">
+                    <form>
+                        <div class="row">
+                            <div class="Na_me">
+                                <input type="text" placeholder="Name" />
+                            </div>
+                            <div class="Phone_number">
+                                <input type="text" placeholder="PhoneNumber" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="Pin_code">
+                                <input type="number" placeholder="Pincode" />
+                            </div>
+                            <div class="Lo_cality">
+                                <input type="text" placeholder="Locality" />
+                            </div>
+                        </div>
+                       
+                            <div class="Address">
+                                <input type="text" placeholder="Address" />
+                            </div>
+                        
+                        <div class="row">
+                            <div class="City">
+                                <input type="text" placeholder="City/Town" />
+                            </div>
+                            <div class="Landmark">
+                                <input type="text" placeholder="Landmark" />
+                            </div>
+                        </div>
+                        <div class="fifth_row">
+                            <h4>Type</h4>
+                            <div class="radio-btn">
+                                <input type="radio" id="Home" name="type" value="Home">
+                                <label for="Home">Home</label><br>
+                                <input type="radio" id="Work" name="type" value="Work">
+                                <label for="Work">Work</label><br>
+                                <input type="radio" id="Other" name="type" value="Other">
+                                <label for="Other">Other</label>
+
+                            </div>
+                        </div>
+                        <div class="continue">
+                            <input type="button" value="CONTINUE" id="cont-id" class="continue-btn" onclick="continue_order()">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="customer_container">
-        <h1>Customer details</h1>
-        <form>
-            <div class="name"></div>
-        </form>
-    </div>
-
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<script>
-    function increment() {
-        document.getElementById('demoInput').stepUp();
-    }
-    function decrement() {
-        document.getElementById('demoInput').stepDown();
-    }
-</script>
-

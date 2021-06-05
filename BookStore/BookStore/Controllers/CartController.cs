@@ -45,11 +45,11 @@ namespace BookStore.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCart(int userId)
+        public ActionResult GetCart()
         {
             try
             {
-                var result = this.cartManager.GetCart(userId);
+                var result = this.cartManager.GetCart();
                 ViewBag.Message = "";
                 return View(result);
             }

@@ -22,9 +22,9 @@ namespace ManagerLayer.Managers
             return this.cartRepo.AddToCart(cartModel);
         }
 
-        public List<GetCart> GetCart(int userId)
+        public List<GetCart> GetCart()
         {
-            return this.cartRepo.GetCart(userId);
+            return this.cartRepo.GetCart();
         }
 
         public bool RemoveFromCart(int cartId, int userId)

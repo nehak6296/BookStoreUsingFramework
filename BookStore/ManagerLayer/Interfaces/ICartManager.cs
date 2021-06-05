@@ -11,7 +11,7 @@ namespace ManagerLayer.Interfaces
     {
         Cart AddToCart(Cart cartModel);
         bool RemoveFromCart(int cartId,int userId);
-        List<GetCart> GetCart(int userId);
+        List<GetCart> GetCart();
 
     }
 }

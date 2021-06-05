@@ -28,7 +28,8 @@ namespace BookStore
                       "~/Content/GetCart.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
-                     "~/Scripts/custom/Book.js"));
+                     "~/Scripts/custom/Book.js",
+                     "~/Scripts/custom/GetCart.js"));
         }
     }
 }
