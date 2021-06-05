@@ -11,6 +11,6 @@ namespace ManagerLayer.Interfaces
     {
         WishList AddToWishList(WishList wishList);
         int RemoveFromWishList(int userId,int WishListId);
-        List<WishList> GetWishList();
+        List<GetWishList> GetWishList();
     }
 }

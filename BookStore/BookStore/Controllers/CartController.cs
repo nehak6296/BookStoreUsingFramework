@@ -17,10 +17,20 @@ namespace BookStore.Controllers
         {
 
         }
-        //GET: Cart
-        public ActionResult GetAllCart()
+        //GET: Cart       
+        [HttpGet]
+        public ActionResult GetCart()
         {
-            return View();
+            try
+            {
+                var result = this.cartManager.GetCart();
+                ViewBag.Message = "";
+                return View(result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpPost]
@@ -44,21 +54,7 @@ namespace BookStore.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult GetCart()
-        {
-            try
-            {
-                var result = this.cartManager.GetCart();
-                ViewBag.Message = "";
-                return View(result);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
+        
         //[HttpPost]
         //public JsonResult RemoveFromCart(int cartId, int userId)
         //{

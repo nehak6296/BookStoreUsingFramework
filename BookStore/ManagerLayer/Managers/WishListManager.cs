@@ -18,7 +18,7 @@ namespace ManagerLayer.Managers
             return this.wishListRepo.AddToWishList(wishList);
         }
 
-        public List<WishList> GetWishList()
+        public List<GetWishList> GetWishList()
         {
             return this.wishListRepo.GetWishList();
         }

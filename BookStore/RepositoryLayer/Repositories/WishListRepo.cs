@@ -17,7 +17,7 @@ namespace RepositoryLayer.Repositories
         //To Handle connection related activities    
         private void Connection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ToString();
+            string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ConnectionString;
             connection = new SqlConnection(connectionString);
 
         }
@@ -76,26 +76,29 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public List<WishList> GetWishList()
+        public List<GetWishList> GetWishList()
         {
             Connection();
-            List<WishList> wishList = new List<WishList>();
+            List<GetWishList> wishList = new List<GetWishList>();
             SqlCommand cmd = new SqlCommand("sp_GetAllWishList", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId", 1);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             connection.Open();
             da.Fill(dt);
-            connection.Close();
+            
             //Bind WishListModel generic list using dataRow     
             foreach (DataRow dr in dt.Rows)
             {
                 wishList.Add(
-                    new WishList
+                    new GetWishList
                     {
-                        BookId = Convert.ToInt32(dr["bookId"]),
-                        UserId = Convert.ToInt32(dr["userId"]),
-                        WishListQuantity = Convert.ToInt32(dr["wishListQuantity"])
+                        BookId = Convert.ToInt32(dr["bookId"]),                       
+                        BookName=Convert.ToString(dr["BookName"]),
+                        Author= Convert.ToString(dr["Author"]),
+                        Price = Convert.ToInt32(dr["Price"]),
+                        Image = Convert.ToString(dr["Image"])
                     }
                     );
             }

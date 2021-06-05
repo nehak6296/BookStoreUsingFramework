@@ -11,6 +11,6 @@ namespace RepositoryLayer.Interfaces
     {
         WishList AddToWishList(WishList wishList);
         int RemoveFromWishList(int userId, int wishListId);
-        List<WishList> GetWishList();
+        List<GetWishList> GetWishList();
     }
 }
