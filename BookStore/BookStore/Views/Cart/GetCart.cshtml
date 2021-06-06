@@ -7,7 +7,18 @@
     </div>
     <div class="card">
         <div class="cart_container">
-            <h1>My Cart(1)</h1>
+            <h1>
+                My Cart(@Model.Sum(b => b.CartBookQuantity))
+            </h1>
+
+                @*// @foreach (var count in Model)
+                    //{
+                    @Model.Sum(b => b.CartBookQuantity);
+                //@count.CartBookQuantity;
+                //}
+                )*@
+           
+
             @foreach (var items in Model)
             {
                 <div class="card_getcart">
@@ -92,7 +103,7 @@
 
         </div>
         <div id="checkout">
-            <h1>Order summary</h1>
+            <h3>Order summary</h3>
             <div id="oder-details">
                 @foreach (var items in Model)
                 {

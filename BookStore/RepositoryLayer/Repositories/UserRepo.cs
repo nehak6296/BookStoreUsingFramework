@@ -28,12 +28,14 @@ namespace RepositoryLayer.Repositories
             try
             {
                 Connection();
+                string password = Encryptdata(registrationModel.Password); ;
+               
                 SqlCommand cmd = new SqlCommand("sp_RegisterUser", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@FirstName", registrationModel.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", registrationModel.LastName);
                 cmd.Parameters.AddWithValue("@Email", registrationModel.Email);
-                cmd.Parameters.AddWithValue("@Password", registrationModel.Password);
+                cmd.Parameters.AddWithValue("@Password", password);
 
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
@@ -58,10 +60,12 @@ namespace RepositoryLayer.Repositories
             try
             {
                 Connection();
+                string password = Decryptdata(loginModel.Password); ;
+
                 SqlCommand cmd = new SqlCommand("sp_LoginUser", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Email", loginModel.Email);
-                cmd.Parameters.AddWithValue("@Password", loginModel.Password);
+                cmd.Parameters.AddWithValue("@Password", password);
 
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
@@ -79,6 +83,26 @@ namespace RepositoryLayer.Repositories
             {
                 connection.Close();
             }
+        }
+        public static string Encryptdata(string password)
+        {
+            string strmsg = string.Empty;
+            byte[] encode = new byte[password.Length];
+            encode = Encoding.UTF8.GetBytes(password);
+            strmsg = Convert.ToBase64String(encode);
+            return strmsg;
+        }
+        public static string Decryptdata(string encryptpwd)
+        {
+            string decryptpwd = string.Empty;
+            UTF8Encoding encodepwd = new UTF8Encoding();
+            Decoder Decode = encodepwd.GetDecoder();
+            byte[] todecode_byte = Convert.FromBase64String(encryptpwd);
+            int charCount = Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+            char[] decoded_char = new char[charCount];
+            Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+            decryptpwd = new String(decoded_char);
+            return decryptpwd;
         }
     }
 }
