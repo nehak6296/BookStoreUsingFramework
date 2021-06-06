@@ -42,3 +42,35 @@ function place_order() {
 
 
 
+function continue_order() {
+
+    var getSelectedValue = document.querySelector('input[name="type"]:checked');
+
+    var customersObject = {};
+    customersObject.Name = $("#Name").val();
+    customersObject.PhoneNumber = $("#Num").val();
+    customersObject.Pincode = $("#Pin").val();
+    customersObject.Locality = $("#Locality").val();
+    customersObject.Address = $("#Address").val();
+    customersObject.City = $("#City").val();
+    customersObject.Landmark = $("#Landmark").val();
+    customersObject.type = getSelectedValue.value;
+
+    console.log(JSON.stringify(customersObject));
+    $.ajax({
+        type: "POST",
+        url: 'https://localhost:44375/Customer/AddCustomerDetails',
+        data: JSON.stringify(customersObject),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function () {
+            var place_order = document.getElementById('cont-id');
+            place_order.style.display = "none";
+            var Order_details = document.getElementById('oder-details');
+            Order_details.style.display = "block";
+        },
+        error: function () {
+            alert("Error while inserting data");
+        }
+    });
+}
