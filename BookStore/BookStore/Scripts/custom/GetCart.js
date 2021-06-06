@@ -5,6 +5,31 @@ function increment() {
 function decrement() {
     document.getElementById('demoInput').stepDown();
 }
+function Remove_Cart(CartId) {
+    var removeFromCart = "remove-".concat(CartId);
+    var requestObject = {};
+    requestObject.CartId = CartId;
+
+    console.log(JSON.stringify(requestObject));
+    $.ajax({
+        type: "POST",
+        url: 'https://localhost:44375/Cart/RemoveFromCart',
+        data: JSON.stringify(requestObject),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success:
+            function () {
+                //Onclick REMOVE button hide AddToCart button
+                var RemoveButton = document.getElementById('placeid');
+                RemoveButton.style.display = "none";
+
+            },
+        error: function () {
+            alert("Error while REMOVING data");
+        }
+    });
+}
+
 
 function place_order() {
     var place_order = document.getElementById('placeid');
@@ -14,57 +39,6 @@ function place_order() {
     form_name.style.display = "block";
 }
 
-function Remove_Cart(CartId) {
-    var removeFromCart = "remove-".concat(CartId);
-    var requestObject = {};
-    requestObject.CartId = CartId;
-    
-    console.log(JSON.stringify(requestObject));
-    $.ajax({
-        type: "POST",
-        url: 'https://localhost:44375/Cart/RemoveFromCart',
-        data: JSON.stringify(requestObject),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: 
-        function() {
-            //Onclick REMOVE button hide AddToCart button
-            var RemoveButton = document.getElementById('placeid');
-            RemoveButton.style.display = "none";  
-             
-        },
-        error: function () {
-            alert("Error while REMOVING data");
-        }
-    });
-}
 
 
 
-//function continue_order() {
-
-//    var requestObject = {};
-//    requestObject.Name = "Mansi";
-//    requestObject.PhoneNumber = 8879218009;
-//    requestObject.Pincode = 400058;
-//    requestObject.Locality = "andheri";
-//    requestObject.Address = "andheri-west";
-//    requestObject.AddressType = "home";
-//    requestObject.City = "mumbai";
-//    requestObject.Landmark = "bmwshowroom";
-//    console.log(JSON.stringify(requestObject));
-//    $.ajax({
-//        type: "POST",
-//        url: 'https://localhost:44375/Customer/AddCustomerDetails',
-//        data: JSON.stringify(requestObject),
-//        dataType: "json",
-//        contentType: "application/json; charset=utf-8",
-//        success: function () {
-//            var place_order = document.getElementById('cont-id');
-//            place_order.style.display = "none";
-//        },
-//        error: function () {
-//            alert("Error while inserting data");
-//        }
-//    });
-//}

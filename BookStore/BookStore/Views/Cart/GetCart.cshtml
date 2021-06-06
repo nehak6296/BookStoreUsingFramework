@@ -27,12 +27,12 @@
                     </div>
                 </div>
 
-        <div class="quantity">
-            <button class="decrease" onclick="decrement()">-</button>
-            <input id=demoInput type=number min=0 max=50>
-            <button class="increase" onclick="increment()">+</button>
-            <input type="button" value="Remove" id="remove-@items.CartId" onclick="Remove_Cart(@items.CartId)">
-        </div> 
+                <div class="quantity">
+                    <button class="decrease" onclick="decrement()">-</button>
+                    <input id=demoInput type=number min=0 max=50>
+                    <button class="increase" onclick="increment()">+</button>
+                    <input type="button" value="Remove" id="remove-@items.CartId" onclick="Remove_Cart(@items.CartId)">
+                </div>
             }
             <input type="button" value="PLACE ORDER" id="placeid" class="place-btn" onclick="place_order()">
         </div>
@@ -43,31 +43,31 @@
                     <form>
                         <div class="row">
                             <div class="Na_me">
-                                <input type="text" placeholder="Name" />
+                                <input type="text" placeholder="Name" id="Name"/>
                             </div>
                             <div class="Phone_number">
-                                <input type="text" placeholder="PhoneNumber" />
+                                <input type="text" placeholder="PhoneNumber" id="Num" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="Pin_code">
-                                <input type="number" placeholder="Pincode" />
+                                <input type="number" placeholder="Pincode" id="Pincode"/>
                             </div>
                             <div class="Lo_cality">
-                                <input type="text" placeholder="Locality" />
+                                <input type="text" placeholder="Locality" id="Locality" />
                             </div>
                         </div>
-                       
-                            <div class="Address">
-                                <input type="text" placeholder="Address" />
-                            </div>
-                        
+
+                        <div class="Address">
+                            <input type="text" placeholder="Address" id="Address"/>
+                        </div>
+
                         <div class="row">
                             <div class="City">
-                                <input type="text" placeholder="City/Town" />
+                                <input type="text" placeholder="City/Town" id="City" />
                             </div>
                             <div class="Landmark">
-                                <input type="text" placeholder="Landmark" />
+                                <input type="text" placeholder="Landmark" id="Landmark" />
                             </div>
                         </div>
                         <div class="fifth_row">
@@ -86,7 +86,34 @@
                             <input type="button" value="CONTINUE" id="cont-id" class="continue-btn" onclick="continue_order()">
                         </div>
                     </form>
+
                 </div>
+            </div>
+
+        </div>
+        <div id="checkout">
+            <h1>Order summary</h1>
+            <div id="oder-details">
+                @foreach (var items in Model)
+                {
+                    <div class="card_getcart">
+                        <div class="getcart_field">
+                            @items.Image
+                        </div>
+                        <div class="container_getcart">
+                            <div class="getcart_field">
+                                @items.BookName
+                            </div>
+                            <div class="getcart_field text_size">
+                                By @items.Author
+                            </div>
+                            <div class="getcart_field">
+                                Rs.@items.Price
+                            </div>
+                        </div>
+                    </div>
+                }
+                <input type="button" value="CHECKOUT" id="checkout-btn" class="checkout-btn">
             </div>
         </div>
     </div>

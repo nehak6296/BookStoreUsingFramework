@@ -87,3 +87,26 @@ h3 {
     background-color: #2877d3;
     border-radius: 2px;
 }
+#checkout {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: -1px;
+    width: 65%;
+    margin-top: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    flex-direction: column;
+    padding: 20px 20px;
+    margin-left: 10%
+}
+#checkout-btn {
+    cursor: pointer;
+    color: white;
+    background-color: #2877d3;
+    border-radius: 2px;
+    margin-top: 9px;
+    margin-left: 74%;
+}
+#oder-details{
+    display: none;
+}
