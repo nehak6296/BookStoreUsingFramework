@@ -12,12 +12,12 @@ namespace ManagerLayer.Managers
 {
     public class UserManager : IUserManager
     {
-        private readonly IUserRepo userRepo= new UserRepo();
+        private readonly IUserRepo userRepo;
 
-        //public UserManager(IUserRepo userRepo)
-        //{
-        //    this.userRepo = userRepo;
-        //}
+        public UserManager(IUserRepo userRepo)
+        {
+            this.userRepo = userRepo;
+        }
 
         public bool LoginUser(Login loginModel)
         {

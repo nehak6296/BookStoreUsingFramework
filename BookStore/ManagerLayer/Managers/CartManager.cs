@@ -12,11 +12,11 @@ namespace ManagerLayer.Managers
 {
     public class CartManager : ICartManager
     {
-        private readonly ICartRepo cartRepo = new CartRepo();
-        //public CartManager(ICartRepo cartRepo)
-        //{
-        //    this.cartRepo = cartRepo;
-        //}
+        private readonly ICartRepo cartRepo ;
+        public CartManager(ICartRepo cartRepo)
+        {
+            this.cartRepo = cartRepo;
+        }
         public Cart AddToCart(Cart cartModel)
         {
             return this.cartRepo.AddToCart(cartModel);

@@ -11,10 +11,10 @@ namespace BookStore.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly ICustomerManager customerManager = new CustomerManager();
-        public CustomerController()
+        private readonly ICustomerManager customerManager;
+        public CustomerController(ICustomerManager customerManager)
         {
-
+            this.customerManager = customerManager;
         }
         // GET: CustomerDetails
 
@@ -24,6 +24,50 @@ namespace BookStore.Controllers
             try
             {
                 var result = this.customerManager.AddCustomerDetails(customer);
+                if (result != null)
+                {
+                    return Json(new { status = true, Message = "Customer added..!!!", Data = result });
+                }
+                else
+                {
+                    return Json(new { status = false, Message = "Customer not added...!!", Data = result });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+                //return ViewBag.Message = "sucessfully";
+            }
+        }
+        [HttpGet]
+        public ActionResult GetAllCustomerDetails(int userId)
+        {
+            try
+            {
+                //int UserId = 1;
+                var result = this.customerManager.GetAllCustomerDetails(userId);
+                if (result != null)
+                {
+                    return Json(new { status = true, Message = "Customers details fetched successfully ..!!!", Data = result },JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { status = false, Message = "No customer present..!!", Data = result }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+                //return ViewBag.Message = "";
+            }
+        }
+
+        [HttpPost]
+        public JsonResult UpdateCustomerDetails(Customer customer)
+        {
+            try
+            {
+                var result = this.customerManager.UpdateCustomerDetails(customer);
                 if (result != null)
                 {
                     return Json(new { status = true, Message = "Customer added..!!!", Data = result });

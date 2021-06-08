@@ -10,9 +10,9 @@ namespace ManagerLayer.Interfaces
     public interface ICustomerManager
     {
         Customer AddCustomerDetails(Customer customer);
-        int DeleteCustomer(int UserId, int CustomerId);
+       
         Customer UpdateCustomerDetails(Customer customer);
-        Customer GetAllCustomerDetails(Customer customer);
+        List<Customer> GetAllCustomerDetails(int userId);
 
 
     }

@@ -11,7 +11,11 @@ namespace BookStore.Controllers
 {
     public class WishListController : Controller
     {
-        private readonly IWishListManager wishListManager = new WishListManager();
+        private readonly IWishListManager wishListManager;
+        public WishListController(IWishListManager wishListManager)
+        {
+            this.wishListManager = wishListManager;
+        }
         // GET: WishList
         
         [HttpGet]

@@ -12,20 +12,21 @@ namespace ManagerLayer.Managers
 {
     public class CustomerManager : ICustomerManager
     {
-        private readonly ICustomerRepo customerRepo = new CustomerRepo();
+        private readonly ICustomerRepo customerRepo ;
+        public CustomerManager(ICustomerRepo customerRepo)
+        {
+            this.customerRepo = customerRepo;
+        }
         public Customer AddCustomerDetails(Customer customer)
         {
             return this.customerRepo.AddCustomerDetails(customer);
         }
 
-        public int DeleteCustomer(int UserId, int CustomerId)
-        {
-            return this.customerRepo.DeleteCustomer(UserId,CustomerId);
-        }
+       
 
-        public Customer GetAllCustomerDetails(Customer customer)
+        public List<Customer> GetAllCustomerDetails(int userId)
         {
-            return this.customerRepo.GetAllCustomerDetails(customer);
+            return this.customerRepo.GetAllCustomerDetails(userId);
         }
 
         public Customer UpdateCustomerDetails(Customer customer)

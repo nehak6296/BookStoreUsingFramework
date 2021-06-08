@@ -12,7 +12,11 @@ namespace ManagerLayer.Managers
 {
     public class WishListManager : IWishListManager
     {
-        private readonly IWishListRepo wishListRepo = new WishListRepo();
+        private readonly IWishListRepo wishListRepo;
+        public WishListManager(IWishListRepo wishListRepo)
+        {
+            this.wishListRepo = wishListRepo;
+        }
         public WishList AddToWishList(WishList wishList)
         {
             return this.wishListRepo.AddToWishList(wishList);

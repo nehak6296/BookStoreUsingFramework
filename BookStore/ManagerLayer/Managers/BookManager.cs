@@ -12,12 +12,12 @@ namespace ManagerLayer.Managers
 {
     public class BookManager : IBookManager
     {
-        private readonly IBookRepo bookRepository = new BookRepo();
+        private readonly IBookRepo bookRepository ;
 
-        //public BookManager(IBookRepo bookRepository)
-        //{
-        //    this.bookRepository = bookRepository;
-        //}        
+        public BookManager(IBookRepo bookRepository)
+        {
+            this.bookRepository = bookRepository;
+        }
 
         public Books AddBook(Books booksModel)
         {

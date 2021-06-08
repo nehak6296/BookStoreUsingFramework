@@ -12,10 +12,10 @@ namespace BookStore.Controllers
 {
     public class CartController : Controller
     {
-        private readonly ICartManager cartManager = new CartManager();
-        public CartController()
+        private readonly ICartManager cartManager ;
+        public CartController(ICartManager cartManager)
         {
-
+            this.cartManager = cartManager;
         }
         //GET: Cart       
         [HttpGet]
@@ -63,8 +63,8 @@ namespace BookStore.Controllers
                 var result = this.cartManager.RemoveFromCart(cartId);
                 if (result > 0)
                 {
-                    return View();
-                   // return Json(new { status = true, Message = "Book added to cart", Data = result });
+                    //return View();
+                   return Json(new { status = true, Message = "Book added to cart", Data = result });
                 }
                 else
                 {

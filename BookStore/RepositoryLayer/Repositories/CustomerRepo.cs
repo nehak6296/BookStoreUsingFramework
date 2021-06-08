@@ -54,34 +54,7 @@ namespace RepositoryLayer.Repositories
                 connection.Close();
             }
         }
-
-        public int DeleteCustomer(int userId, int customerId)
-        {
-            try
-            {
-                Connection();
-                SqlCommand cmd = new SqlCommand("sp_DeleteCustomer", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CustomerId", customerId);
-                cmd.Parameters.AddWithValue("@UserId", userId);
-                connection.Open();
-                int i = cmd.ExecuteNonQuery();
-                connection.Close();
-                if (i >= 1)
-                    return customerId;
-                else
-                    return 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
+      
         public Customer UpdateCustomerDetails(Customer customer)
         {
             try
@@ -89,14 +62,16 @@ namespace RepositoryLayer.Repositories
                 Connection();
                 SqlCommand cmd = new SqlCommand("sp_UpdateCustomerDetails", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@BookId", customer.Name);
-                cmd.Parameters.AddWithValue("@BookId", customer.PhoneNumber);
-                cmd.Parameters.AddWithValue("@BookId", customer.Address);
-                cmd.Parameters.AddWithValue("@BookId", customer.City);
-                cmd.Parameters.AddWithValue("@BookId", customer.Locality);
-                cmd.Parameters.AddWithValue("@BookId", customer.Landmark);
-                cmd.Parameters.AddWithValue("@BookId", customer.Pincode);
-                cmd.Parameters.AddWithValue("@BookId", customer.Type);
+                //cmd.Parameters.AddWithValue("@UserId",1);
+                cmd.Parameters.AddWithValue("@CustomerId",customer.CustomerId);
+                cmd.Parameters.AddWithValue("@Name", customer.Name);
+                cmd.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+                cmd.Parameters.AddWithValue("@Address", customer.Address);
+                cmd.Parameters.AddWithValue("@City", customer.City);
+                cmd.Parameters.AddWithValue("@Locality", customer.Locality);
+                cmd.Parameters.AddWithValue("@Landmark", customer.Landmark);
+                cmd.Parameters.AddWithValue("@Pincode", customer.Pincode);
+                cmd.Parameters.AddWithValue("@Type", customer.Type);
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
@@ -115,12 +90,13 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public Customer GetAllCustomerDetails(Customer customer)
+        public List<Customer> GetAllCustomerDetails(int userId)
         {
             Connection();
             List<Customer> customerList = new List<Customer>();
             SqlCommand cmd = new SqlCommand("sp_GetAllCustomerDetails", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId",userId);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             connection.Open();
@@ -132,12 +108,20 @@ namespace RepositoryLayer.Repositories
                 customerList.Add(
                     new Customer
                     {
-                        CustomerId = Convert.ToInt32(dr["customerId"]),
-                        UserId = Convert.ToInt32(dr["userId"])                        
+                        CustomerId = Convert.ToInt32(dr["CustomerId"]),
+                        UserId = Convert.ToInt32(dr["UserId"]),
+                        Name = Convert.ToString(dr["Name"]),
+                        Address=Convert.ToString(dr["Address"]),
+                        Locality=Convert.ToString(dr["Locality"]),
+                        Landmark= Convert.ToString(dr["Landmark"]),
+                        Pincode=Convert.ToInt32(dr["Pincode"]),
+                        PhoneNumber= Convert.ToInt32(dr["PhoneNumber"]),
+                        City= Convert.ToString(dr["City"]),
+                        Type=Convert.ToString(dr["Type"])
                     }
-                    );
+                    ); ;
             }
-            return customer;
+            return customerList;
         }
     }
 }

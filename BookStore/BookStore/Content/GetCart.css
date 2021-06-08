@@ -70,8 +70,11 @@ h3 {
 }
 
 .row {
+    /*display: flex;
+    justify-content: space-around;*/
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    padding-left: 33px;
 }
 
 .radio-btn {
@@ -109,4 +112,12 @@ h3 {
 }
 #oder-details{
     display: none;
+}
+.card_getcart {
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center
+}
+.container_getcart {
+    padding-left: 10px;
 }

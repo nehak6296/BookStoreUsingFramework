@@ -10,14 +10,16 @@
             <h1>
                 My Cart(@Model.Sum(b => b.CartBookQuantity))
             </h1>
+            @*@Html.GetType(model => model.UserId)*@
 
-                @*// @foreach (var count in Model)
-                    //{
-                    @Model.Sum(b => b.CartBookQuantity);
-                //@count.CartBookQuantity;
-                //}
-                )*@
-           
+
+            @*// @foreach (var count in Model)
+            //{
+            @Model.Sum(b => b.CartBookQuantity);
+        //@count.CartBookQuantity;
+        //}
+        )*@
+
 
             @foreach (var items in Model)
             {
@@ -106,7 +108,7 @@
             <h3>Order summary</h3>
             <div id="oder-details">
                 @foreach (var items in Model)
-                {
+                 {
                     <div class="card_getcart">
                         <div class="getcart_field">
                             @items.Image
@@ -123,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-                }
+                 }
                 <input type="button" value="CHECKOUT" id="checkout-btn" class="checkout-btn">
             </div>
         </div>

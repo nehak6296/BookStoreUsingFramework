@@ -8,13 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace BookStore.Controllers
-{
+{   
     public class BooksController : Controller
     {
-       private readonly IBookManager booksManager = new BookManager();
-        public BooksController()
+       private readonly IBookManager booksManager ;
+        public BooksController(IBookManager booksManager)
         {
-
+            this.booksManager = booksManager;
         }
         //GET: Books
         public ActionResult GetAllBooks()

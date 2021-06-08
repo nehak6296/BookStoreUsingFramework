@@ -13,9 +13,10 @@ namespace BookStore.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserManager userManager= new UserManager();
-        public UserController()
+        private readonly IUserManager userManager;
+        public UserController(IUserManager userManager)
         {
+            this.userManager = userManager;
         }        
         public ActionResult Register()
         {            
