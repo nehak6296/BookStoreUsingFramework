@@ -41,6 +41,48 @@ namespace BookStore.Controllers
                 return ViewBag.Message = "sucessfully";
             }
         }
+
+        [HttpPost]
+        public ActionResult AddBook(Books book)
+        {
+            try
+            {
+                var result = this.booksManager.AddBook(book);
+                if (result != null)
+                {
+                    return Json(new { status = true, Message = "Book added", Data = result });
+                }
+                else
+                {
+                    return Json(new { status = false, Message = "Book not added", Data = result });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        [HttpPost]
+        public ActionResult DeleteBook(int bookId)
+        {
+            try
+            {
+                var result = this.booksManager.DeleteBook(bookId);
+                if (result==true)
+                {
+                    return Json(new { status = true, Message = "Book added", Data = result });
+                }
+                else
+                {
+                    return Json(new { status = false, Message = "Book not added", Data = result });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         [HttpPost]
         public ActionResult UploadImage(int BookId, HttpPostedFileBase image)
         {

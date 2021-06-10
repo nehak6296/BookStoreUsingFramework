@@ -36,7 +36,7 @@ namespace RepositoryLayer.Repositories
                 cmd.Parameters.AddWithValue("@Details", booksModel.Details);
                 cmd.Parameters.AddWithValue("@Price", booksModel.Price);
                 cmd.Parameters.AddWithValue("@Quantity", booksModel.Quantity);
-
+                cmd.Parameters.AddWithValue("@Image", booksModel.Image);
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
