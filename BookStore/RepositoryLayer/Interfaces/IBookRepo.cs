@@ -13,7 +13,7 @@ namespace RepositoryLayer.Interfaces
         Books AddBook(Books booksModel);
         Books UpdateBook(Books booksModel);
         bool DeleteBook(int bookId);
-        List<Books> GetAllBooks();        
-
+        List<Books> GetAllBooks();
+        bool UploadImage(int BookId, string imageUpload);
     }
 }

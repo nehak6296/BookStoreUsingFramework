@@ -37,6 +37,11 @@ namespace ManagerLayer.Managers
         public Books UpdateBook(Books booksModel)
         {
             return this.bookRepository.UpdateBook(booksModel);
-        }       
+        }
+
+        public bool UploadImage(int BookId, string imageUpload)
+        {
+            return this.bookRepository.UploadImage(BookId, imageUpload);
+        }
     }
 }
