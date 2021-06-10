@@ -1,4 +1,7 @@
-﻿using ModelsLayer;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Http;
+using ModelsLayer;
 using RepositoryLayer.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -146,7 +149,7 @@ namespace RepositoryLayer.Repositories
             {
                 connection.Close();
             }
-        }
-
+        }       
     }
 }
+

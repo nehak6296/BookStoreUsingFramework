@@ -1,5 +1,8 @@
-﻿using ManagerLayer.Interfaces;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using ManagerLayer.Interfaces;
 using ManagerLayer.Managers;
+using Microsoft.AspNetCore.Http;
 using ModelsLayer;
 using System;
 using System.Collections.Generic;
@@ -9,6 +12,7 @@ using System.Web.Mvc;
 
 namespace BookStore.Controllers
 {   
+    //[Authorize]
     public class BooksController : Controller
     {
        private readonly IBookManager booksManager ;
@@ -22,6 +26,7 @@ namespace BookStore.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult GetAllBooks(Books book)
         {
@@ -35,6 +40,6 @@ namespace BookStore.Controllers
             {
                 return ViewBag.Message = "sucessfully";
             }
-        }
+        }       
     }
 }

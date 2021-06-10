@@ -10,6 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace BookStore.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ICartManager cartManager ;

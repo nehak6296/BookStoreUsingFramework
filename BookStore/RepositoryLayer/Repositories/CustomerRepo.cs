@@ -92,37 +92,43 @@ namespace RepositoryLayer.Repositories
 
         public List<Customer> GetAllCustomerDetails(int userId)
         {
-            Connection();
-            List<Customer> customerList = new List<Customer>();
-            SqlCommand cmd = new SqlCommand("sp_GetAllCustomerDetails", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserId",userId);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            connection.Open();
-            da.Fill(dt);
-            connection.Close();
-            //Bind CustomerModel generic list using dataRow     
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                customerList.Add(
-                    new Customer
-                    {
-                        CustomerId = Convert.ToInt32(dr["CustomerId"]),
-                        UserId = Convert.ToInt32(dr["UserId"]),
-                        Name = Convert.ToString(dr["Name"]),
-                        Address=Convert.ToString(dr["Address"]),
-                        Locality=Convert.ToString(dr["Locality"]),
-                        Landmark= Convert.ToString(dr["Landmark"]),
-                        Pincode=Convert.ToInt32(dr["Pincode"]),
-                        PhoneNumber= Convert.ToInt32(dr["PhoneNumber"]),
-                        City= Convert.ToString(dr["City"]),
-                        Type=Convert.ToString(dr["Type"])
-                    }
-                    ); ;
+                Connection();
+                List<Customer> customerList = new List<Customer>();
+                SqlCommand cmd = new SqlCommand("sp_GetAllCustomerDetails", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                connection.Open();
+                da.Fill(dt);
+                connection.Close();
+                //Bind CustomerModel generic list using dataRow     
+                foreach (DataRow dr in dt.Rows)
+                {
+                    customerList.Add(
+                        new Customer
+                        {
+                            CustomerId = Convert.ToInt32(dr["CustomerId"]),
+                            UserId = Convert.ToInt32(dr["UserId"]),
+                            Name = Convert.ToString(dr["Name"]),
+                            Address = Convert.ToString(dr["Address"]),
+                            Locality = Convert.ToString(dr["Locality"]),
+                            Landmark = Convert.ToString(dr["Landmark"]),
+                            Pincode = Convert.ToInt32(dr["Pincode"]),
+                            PhoneNumber = Convert.ToInt32(dr["PhoneNumber"]),
+                            City = Convert.ToString(dr["City"]),
+                            Type = Convert.ToString(dr["Type"])
+                        }
+                        );
+                }
+                return customerList;
             }
-            return customerList;
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
-

@@ -1,13 +1,10 @@
 ﻿using ModelsLayer;
 using RepositoryLayer.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories
 {
@@ -60,8 +57,7 @@ namespace RepositoryLayer.Repositories
             try
             {
                 Connection();
-                string password = Decryptdata(loginModel.Password); ;
-
+                string password = Encryptdata(loginModel.Password); 
                 SqlCommand cmd = new SqlCommand("sp_LoginUser", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Email", loginModel.Email);
@@ -70,7 +66,7 @@ namespace RepositoryLayer.Repositories
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
-                if (i >= 1)
+                if (i <=1)
                     return true;
                 else
                     return false;

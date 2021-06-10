@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace BookStore.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerManager customerManager;

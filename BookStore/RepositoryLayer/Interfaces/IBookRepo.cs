@@ -1,4 +1,5 @@
-﻿using ModelsLayer;
+﻿using Microsoft.AspNetCore.Http;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,7 @@ namespace RepositoryLayer.Interfaces
         Books AddBook(Books booksModel);
         Books UpdateBook(Books booksModel);
         bool DeleteBook(int bookId);
-
-        List<Books> GetAllBooks();
+        List<Books> GetAllBooks();        
 
     }
 }

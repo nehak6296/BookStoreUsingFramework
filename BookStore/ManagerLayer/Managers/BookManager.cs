@@ -1,4 +1,5 @@
 ﻿using ManagerLayer.Interfaces;
+using Microsoft.AspNetCore.Http;
 using ModelsLayer;
 using RepositoryLayer.Interfaces;
 using RepositoryLayer.Repositories;
@@ -36,6 +37,6 @@ namespace ManagerLayer.Managers
         public Books UpdateBook(Books booksModel)
         {
             return this.bookRepository.UpdateBook(booksModel);
-        }
+        }       
     }
 }

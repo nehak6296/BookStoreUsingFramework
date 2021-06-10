@@ -1,4 +1,5 @@
-﻿using ModelsLayer;
+﻿using Microsoft.AspNetCore.Http;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace ManagerLayer.Interfaces
         Books UpdateBook(Books booksModel);
         bool DeleteBook(int bookId);
         List<Books> GetAllBooks();
+        bool UploadImage(int BookId,string imageUpload);
 
     }
 }
