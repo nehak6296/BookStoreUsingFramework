@@ -221,11 +221,13 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MyRoleProviders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -272,10 +274,12 @@
     <Content Include="Views\Books\GetAllBooks.cshtml" />
     <Content Include="Views\Cart\GetCart.cshtml" />
     <Content Include="Views\WishList\GetWishList.cshtml" />
+    <Content Include="Views\Orders\PlaceOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>

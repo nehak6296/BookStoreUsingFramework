@@ -9,9 +9,7 @@ function Remove_Cart(CartId) {
     var removeFromCart = "remove-".concat(CartId);
     var requestObject = {};
     requestObject.CartId = CartId;
-    //var cartId = parseInt(CartId);
-
-    //console.log(JSON.stringify(requestObject));
+   
     $.ajax({
         type: "POST",
         url: 'https://localhost:44375/Cart/RemoveFromCart',
@@ -119,4 +117,22 @@ function continue_order() {
             }
         });
     }   
+}
+
+function checkout() {
+    var requestObject = {};
+    requestObject.cartId = 24;
+    requestObject.userId = 1;
+    $.ajax({
+        type: "POST",
+        url: 'https://localhost:44375/Orders/PlaceOrder',
+        data: JSON.stringify(requestObject),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success:                          
+                console.log("response=" + response),
+        error: function () {
+            alert("Error while REMOVING data");
+        }
+    });
 }

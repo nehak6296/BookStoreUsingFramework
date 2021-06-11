@@ -26,7 +26,7 @@ namespace BookStore.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult GetAllBooks(Books book)
         {
@@ -41,7 +41,7 @@ namespace BookStore.Controllers
                 return ViewBag.Message = "sucessfully";
             }
         }
-
+       
         [HttpPost]
         public ActionResult AddBook(Books book)
         {
@@ -62,6 +62,8 @@ namespace BookStore.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+       
         [HttpPost]
         public ActionResult DeleteBook(int bookId)
         {
@@ -70,11 +72,11 @@ namespace BookStore.Controllers
                 var result = this.booksManager.DeleteBook(bookId);
                 if (result==true)
                 {
-                    return Json(new { status = true, Message = "Book added", Data = result });
+                    return Json(new { status = true, Message = "Book deleted", Data = result });
                 }
                 else
                 {
-                    return Json(new { status = false, Message = "Book not added", Data = result });
+                    return Json(new { status = false, Message = "Book not deleted", Data = result });
                 }
             }
             catch (Exception ex)

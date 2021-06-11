@@ -25,8 +25,7 @@ namespace RepositoryLayer.Repositories
             try
             {
                 Connection();
-                string password = Encryptdata(registrationModel.Password); ;
-               
+                string password = Encryptdata(registrationModel.Password);                
                 SqlCommand cmd = new SqlCommand("sp_RegisterUser", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@FirstName", registrationModel.FirstName);
@@ -56,6 +55,8 @@ namespace RepositoryLayer.Repositories
         {
             try
             {
+                //Random random = new Random();
+                //random.Next(100000,999999);
                 Connection();
                 string password = Encryptdata(loginModel.Password); 
                 SqlCommand cmd = new SqlCommand("sp_LoginUser", connection);

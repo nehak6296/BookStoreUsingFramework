@@ -33,9 +33,9 @@ namespace RepositoryLayer.Repositories
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
                 if (i >= 1)
-                    return userId;
+                    return 1;
                 else
-                    return cartId;
+                    return 0;
             }
             catch (Exception ex)
             {
