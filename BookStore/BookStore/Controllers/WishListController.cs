@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace BookStore.Controllers
 {
+    [Authorize(Roles = "Admin,Customer")]
     public class WishListController : Controller
     {
         private readonly IWishListManager wishListManager;
@@ -54,8 +55,25 @@ namespace BookStore.Controllers
                //return ViewBag.Message = "sucessfully";
             }
         }
-
-      
-
+        [HttpPost]
+        public JsonResult RemoveFromWishList(int wishListId)
+        {
+            try
+            {
+                var result = this.wishListManager.RemoveFromWishList(wishListId);
+                if (result >0)
+                {
+                    return Json(new { status = true, Message = "Book removed from wishList", Data = result });
+                }
+                else
+                {
+                    return Json(new { status = false, Message = "can't remove from wishList", Data = result });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);                
+            }
+        }
     }
 }

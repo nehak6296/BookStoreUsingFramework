@@ -9,23 +9,12 @@
         <div class="cart_container">
             <h1>
                 My Cart(@Model.Sum(b => b.CartBookQuantity))
-            </h1>
-            @*@Html.GetType(model => model.UserId)*@
-
-
-            @*// @foreach (var count in Model)
-            //{
-            @Model.Sum(b => b.CartBookQuantity);
-        //@count.CartBookQuantity;
-        //}
-        )*@
-
-
+            </h1>   
             @foreach (var items in Model)
             {
                 <div class="card_getcart">
                     <div class="getcart_field">
-                        @items.Image
+                        <img src="@Url.Content(@items.Image)" alt="Image" />
                     </div>
                     <div class="container_getcart">
                         <div class="getcart_field">

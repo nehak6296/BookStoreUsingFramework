@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace BookStore.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Customer")]
     public class CustomerController : Controller
     {
         private readonly ICustomerManager customerManager;

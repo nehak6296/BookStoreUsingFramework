@@ -129,10 +129,10 @@ function checkout() {
         data: JSON.stringify(requestObject),
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        success:                          
-                console.log("response=" + response),
+        success:
+            console.log("OrderPlaced"),
         error: function () {
-            alert("Error while REMOVING data");
+            alert("Error ");
         }
     });
 }

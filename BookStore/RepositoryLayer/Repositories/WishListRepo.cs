@@ -49,20 +49,19 @@ namespace RepositoryLayer.Repositories
             }
         }
 
-        public int RemoveFromWishList(int userId, int wishListId)
+        public int RemoveFromWishList(int wishListId)
         {
             try
             {
                 Connection();
                 SqlCommand cmd = new SqlCommand("sp_RemoveFromWishList", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@BookId", wishListId);
-                cmd.Parameters.AddWithValue("@UserId", userId);               
+                cmd.Parameters.AddWithValue("@WishListId", wishListId);                               
                 connection.Open();
                 int i = cmd.ExecuteNonQuery();
                 connection.Close();
                 if (i >= 1)
-                    return wishListId;
+                    return 1;
                 else
                     return 0;
             }
@@ -94,7 +93,9 @@ namespace RepositoryLayer.Repositories
                 wishList.Add(
                     new GetWishList
                     {
-                        BookId = Convert.ToInt32(dr["bookId"]),                       
+                        WishListId=Convert.ToInt32(dr["WishListId"]),
+                        WishListQuantity=Convert.ToInt32(dr["WishListQuantity"]),
+                        BookId = Convert.ToInt32(dr["BookId"]),                       
                         BookName=Convert.ToString(dr["BookName"]),
                         Author= Convert.ToString(dr["Author"]),
                         Price = Convert.ToInt32(dr["Price"]),

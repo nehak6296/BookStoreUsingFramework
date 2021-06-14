@@ -29,8 +29,7 @@ textarea {
     justify-content: center;
     align-items: center;
     font-size: 20px;
-}
-*/
+}*/
 
 
 .box {
@@ -52,7 +51,13 @@ textarea {
     color: white;
     padding-top: 5px;
 }
-
+a {
+    FONT-SIZE: 20PX;
+    font-family: 'Poppins', sans-serif;
+    float: left;
+    flex-wrap: wrap;
+    color: white;
+}
 .text2 {
     font-family: 'Poppins', sans-serif;
     float: right;
@@ -117,4 +122,18 @@ textarea {
     width: 90px;
     height: 25px;
 }
-
+.input-field {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<ModelsLayer.GetWishList>
-@Styles.Render("~/Content/GetCart.css")
+
 <body>
     <div>
         <div class="box">
@@ -7,28 +7,28 @@
         </div>
         <div class="card">
             <div class="cart_container">
-                <h1>My WishList</h1>
+                <h1>My WishList(@Model.Sum(b => b.WishListQuantity))</h1>
                 @foreach (var items in Model)
                  {
                     <div class="card_getcart">
                         <div class="getcart_field">
-                            @items.Image
+                            <img src="@Url.Content(@items.Image)" alt="Image" />
                         </div>
                         <div class="container_getcart">
-                            <div class="getcart_field">
-                                @items.BookName
-                            </div>
-                            <div class="getcart_field text_size">
-                                By @items.Author
-                            </div>
-                            <div class="getcart_field">
-                                Rs.@items.Price
-                            </div>
-                            <div>
-                                <input type="button" value="Remove" id="remove-@items.BookId" onclick="Remove_WishList(@items.BookId)">
-                            </div>
-                        </div>
+                          <div class="getcart_field">
+                            @items.BookName
+                          </div>
+                          <div class="getcart_field text_size">
+                             By @items.Author
+                          </div>
+                    <div class="getcart_field">
+                        Rs.@items.Price
                     </div>
+                </div>
+                <div>
+                    <input type="button" value="Remove" id="remove-@items.WishListId" class="btn-wishlist" onclick="Remove_WishList(@items.WishListId)">
+                </div>
+            </div>
                  }
             </div>
          </div>

@@ -29,7 +29,8 @@ namespace BookStore
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                      "~/Scripts/custom/Book.js",
-                     "~/Scripts/custom/GetCart.js"));
+                     "~/Scripts/custom/GetCart.js",
+                     "~/Scripts/custom/GetWishList.js"));
         }
     }
 }

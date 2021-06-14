@@ -4,7 +4,10 @@
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
+<div class="nav-login">
+    <h2 class="nav-book">Bookstore</h2>
+</div>
+<h2 class="login">Register</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +15,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-      
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -49,7 +52,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Register" class="btn btn-default"  />
+                <input type="submit" value="Register" class="register-btn" />
                 @*<input type="submit" value="Register" class="btn btn-default" onclick="window.location.href='https://localhost:44375/Book/GetAllBooks'" class="btn btn-primary" />*@
             </div>
         </div>

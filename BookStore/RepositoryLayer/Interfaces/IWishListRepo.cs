@@ -10,7 +10,7 @@ namespace RepositoryLayer.Interfaces
     public interface IWishListRepo
     {
         WishList AddToWishList(WishList wishList);
-        int RemoveFromWishList(int userId, int wishListId);
+        int RemoveFromWishList( int wishListId);
         List<GetWishList> GetWishList();
     }
 }

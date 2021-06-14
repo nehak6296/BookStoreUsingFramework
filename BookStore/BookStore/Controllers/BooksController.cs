@@ -26,7 +26,7 @@ namespace BookStore.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet]
         public ActionResult GetAllBooks(Books book)
         {
@@ -41,7 +41,8 @@ namespace BookStore.Controllers
                 return ViewBag.Message = "sucessfully";
             }
         }
-       
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddBook(Books book)
         {
@@ -63,7 +64,7 @@ namespace BookStore.Controllers
             }
         }
 
-       
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteBook(int bookId)
         {
@@ -84,7 +85,7 @@ namespace BookStore.Controllers
                 throw new Exception(ex.Message);
             }
         }
-
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult UploadImage(int BookId, HttpPostedFileBase image)
         {

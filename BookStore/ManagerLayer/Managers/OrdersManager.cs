@@ -16,9 +16,9 @@ namespace ManagerLayer.Managers
         {
             this.ordersRepo = ordersRepo;
         }
-        public int PlaceOrder(int UserId, int CartId)
+        public Orders PlaceOrder(Orders orders)
         {
-            return this.ordersRepo.PlaceOrder(UserId,CartId);
+            return this.ordersRepo.PlaceOrder(orders);
         }
         public Orders GetAllOrders(Orders orders)
         {

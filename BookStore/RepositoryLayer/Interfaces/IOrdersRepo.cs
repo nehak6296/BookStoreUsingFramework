@@ -9,7 +9,7 @@ namespace RepositoryLayer.Interfaces
 {
     public interface IOrdersRepo
     {
-        int PlaceOrder(int userId, int cartId);
+        Orders PlaceOrder(Orders orders);
         Orders GetAllOrders(Orders orders);
     }
 }

@@ -20,22 +20,34 @@ namespace RepositoryLayer.Repositories
             string connectionString = ConfigurationManager.ConnectionStrings["UserDbConnection"].ConnectionString;
             connection = new SqlConnection(connectionString);
         }
-        public int PlaceOrder(int userId, int cartId)
+        public Orders PlaceOrder(Orders orders)
         {
             try
             {
                 Connection();
                 SqlCommand cmd = new SqlCommand("sp_PlaceOrder", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@UserId", userId);
-                cmd.Parameters.AddWithValue("@CartId", cartId);               
+                cmd.Parameters.AddWithValue("@UserId", orders.UserId);
+                cmd.Parameters.AddWithValue("@CartId", orders.CartId);
+                //cmd.Parameters.AddWithValue("@OrderId",orders.OrderId,out);
                 connection.Open();
-                int i = cmd.ExecuteNonQuery();
+                var i = cmd.ExecuteScalar();
                 connection.Close();
-                if (i >= 1)
-                    return 1;
+                if (i != null)                    
+                    return orders;
                 else
-                    return 0;
+                    return null;
+                
+                //SqlDataReader rdr = cmd.ExecuteReader();
+                //int OrderId;
+                //while (rdr.Read())
+                //{
+                //    OrderId = Convert.ToInt32(rdr["orderId"]);
+                //    orders.OrderId = OrderId;
+                //}
+
+
+
             }
             catch (Exception ex)
             {

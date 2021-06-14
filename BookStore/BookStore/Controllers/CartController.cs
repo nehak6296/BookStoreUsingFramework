@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace BookStore.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Customer")]
     public class CartController : Controller
     {
         private readonly ICartManager cartManager ;
@@ -75,7 +75,7 @@ namespace BookStore.Controllers
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-                //return ViewBag.Message = "sucessfully";
+                
             }
         }
     }

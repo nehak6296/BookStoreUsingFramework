@@ -135,9 +135,11 @@ namespace RepositoryLayer.Repositories
                             Author = Convert.ToString(dr["Author"]),
                             Details = Convert.ToString(dr["Details"]),
                             Price = Convert.ToDouble(dr["Price"]),
-                            Quantity = Convert.ToInt32(dr["Quantity"])
+                            Quantity = Convert.ToInt32(dr["Quantity"]),
+                            Image = Convert.ToString(dr["Image"])
+
                         }
-                        );
+                        ) ;
                 }
                 return BookList;
             }

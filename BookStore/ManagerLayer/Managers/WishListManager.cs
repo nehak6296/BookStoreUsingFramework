@@ -27,9 +27,9 @@ namespace ManagerLayer.Managers
             return this.wishListRepo.GetWishList();
         }
 
-        public int RemoveFromWishList(int userId, int wishListId)
+        public int RemoveFromWishList( int wishListId)
         {
-            return this.wishListRepo.RemoveFromWishList(userId, wishListId);
+            return this.wishListRepo.RemoveFromWishList( wishListId);
 
         }
     }
