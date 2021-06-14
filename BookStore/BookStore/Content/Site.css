@@ -52,6 +52,12 @@ textarea {
     padding-top: 5px;
 }
 a {
+    FONT-SIZE: 15PX;
+    font-family: 'Poppins', sans-serif;
+    float: left;
+    flex-wrap: wrap;    
+}
+.wishLink {
     FONT-SIZE: 20PX;
     font-family: 'Poppins', sans-serif;
     float: left;

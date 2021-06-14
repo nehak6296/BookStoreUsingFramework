@@ -14,40 +14,55 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input-field" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input-field" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "input-field" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "input-field" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="button">
-            <div class="btn-login">
-                <input type="submit" value="Login" class="login-btn" onclick="window.location.href='https://localhost:44375/Books/GetAllBooks'" />
-            </div>
-            <div class="btn-register">
-                <input type="button" value="Register" class="register-btn"  onclick="window.location.href='https://localhost:44375/User/Register'" class="btn btn-primary" />
-            </div>
-            </div>
+    <div class="button">
+        <div class="btn-login">
+            <input type="submit" value="Login" class="login-btn" onclick="window.location.href='https://localhost:44375/Books/GetAllBooks'" />
         </div>
+        <div class="btn-register">
+            <input type="button" value="Register" class="register-btn" onclick="window.location.href='https://localhost:44375/User/Register'"  />
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Login with facebook", "Facebook", "Home")
+
+        <table>
+            <tr><td>Email:</td><td><b>@TempData["email"]</b></td></tr>
+
+            <tr><td>First Name:</td><td><b>@TempData["first_name"]</b></td></tr>
+
+            <tr><td>Last Name:</td><td><b>@TempData["lastname"]</b></td></tr>
+
+            <tr><td>Picture:</td><td><b><img src="@TempData["picture"]" /></b></td></tr>
+        </table>
+
+
+    </div>
+
+</div>
+    
 }
 
-@*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -70,5 +70,6 @@ namespace BookStore.Controllers
         {
             return this.userManager.LoginUser(login);
         }
+
     }
 }
