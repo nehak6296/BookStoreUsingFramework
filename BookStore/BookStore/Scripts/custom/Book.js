@@ -100,4 +100,40 @@ function DeleteBook(bookId) {
 }
 
 
+function showForm() {    
+    var books = document.getElementById('whole');
+    books.style.display = "none";
+
+    var form = document.getElementById('form-div-book');
+    form.style.display = "block";
+}
+function AddBook() {
+    
+    var book = {};
+    book.BookName = $("#BookName").val();
+    book.Author = $("#Author").val();
+    book.Price = $("#Price").val();
+    book.Details = $("#Details").val();
+    book.Quantity = $("#Quantity").val();
+    book.Image = $("#Image").val();
+
+    console.log(JSON.stringify(book));
+    $.ajax({
+        type: "POST",
+        url: 'https://localhost:44375/Books/AddBook',
+        data: JSON.stringify(book),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function () {
+            //Onclick AddToWishList button hide AddToCart button
+            alert("BookAdded")
+            window.location.reload();
+        },
+        error: function () {
+            alert("Error while inserting data");
+        }
+    });
+}
+
+
 

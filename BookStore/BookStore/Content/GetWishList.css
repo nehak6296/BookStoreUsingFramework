@@ -1,9 +1,9 @@
 ﻿.btn-wishlist {
-    padding: 0px 5px;
-    border-radius: 1px;
-    border-color: #800000;
-    background-color: #800000;
-    color: white;
-    font-size: 13px;
-    margin-left: 10px;
+  
+    color: #fff;
+    background-color: #841e1c;
+    width: 120px;
+    height: 25px;
+    font-size: 14px;
+    margin-left: 5px;
 }

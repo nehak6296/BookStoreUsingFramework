@@ -5,59 +5,71 @@
         <h2 class="text1">Bookstore</h2>
         <h4 class="text2"><a href="https://localhost:44375/Cart/GetCart" class="wishLink">Cart</a></h4>
         <h4 class="text2"><a href="https://localhost:44375/WishList/GetWishList" class="wishLink">Wishlist</a></h4>
-        @if (User.Identity.IsAuthenticated)
-        {
-            if (User.IsInRole("Admin"))
-            {
-                <input type="button" value="ADD BOOK" class="btn-danger" id="addBtn" onclick="AddBook()">
-            }
-        }
-    </div>    
-            <h2 class="login">Booklist</h2>
-            <div class="container card_container">
 
-                @foreach (var items in Model)
-                {
-                    <div class="card_getbooks">
-                        <div class="container_getbooks">
-                            <div class="getbook_field">
-                                <img src="@Url.Content(@items.Image)" alt="Image" class="book_image" />
-                            </div>
-                            <div class="getbook_field">
-                                @items.BookName
-                            </div>
-                            <div class="getbook_field text_size">
-                                by @items.Author
-                            </div>
-                            <div class="getbook_field">
-                                Rs.   @items.Price
-                            </div>
-                            <div class="buttons">
-                                <div class="add">
-                                    <input type="button" value="ADD TO CART" class="btn-danger" id="cartBtn-@items.BookId" onclick="AddToCart(@items.BookId)">
-                                </div>
-                                <input type="button" value="ADDED TO CART" class="btn-primary" id="addedCartBtn-@items.BookId">
-
-                                <div class="wishlist">
-                                    <input type="button" value="WISHLIST" class="btn-wishlist" id="wishBtn-@items.BookId" onclick="AddToWishList(@items.BookId)">
-                                </div>
-                                <input type="button" value="wISHLISTED" class="btn-primary" id="addedWishListBtn-@items.BookId">
-                            </div>
-                            <div>
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    if (User.IsInRole("Admin"))
-                                    {
-                                        <input type="button" value="DELETE" class="btn-danger" id="deleteBtn-@items.BookId" onclick="DeleteBook(@items.BookId)">
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-
-                }
-            </div>
     </div>
+    <div id="form-div-book" style="display:none">
+        <form>
+            <input type="text" placeholder="BookName" id="BookName" />
+            <input type="text" placeholder="Author" id="Author" />
+            <input type="text" placeholder="Details" id="Details" />
+            <input type="text" placeholder="Price" id="Price" />
+            <input type="number" placeholder="Quantity" id="Quantity" />
+            <input type="text" placeholder="Image" id="Image" />
+            <input type="button" value="ADD" class="btn-add" onclick="AddBook()" />
+        </form>
+    </div>
+    <h2 class="login">Booklist</h2>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <input type="button" value="ADD NEW BOOK" class="btn-danger" id="addBtn" onclick="showForm()">
+        }
+    }
+    <div class="container card_container" id="whole">
+
+        @foreach (var items in Model)
+        {
+            <div class="card_getbooks">
+                <div class="container_getbooks">
+                    <div class="getbook_field">
+                        <img src="@Url.Content(@items.Image)" alt="Image" class="book_image" />
+                    </div>
+                    <div class="getbook_field">
+                        @items.BookName
+                    </div>
+                    <div class="getbook_field text_size">
+                        by @items.Author
+                    </div>
+                    <div class="getbook_field">
+                        Rs.   @items.Price
+                    </div>
+                    <div class="buttons">
+                        <div class="add">
+                            <input type="button" value="ADD TO CART" class="btn-danger" id="cartBtn-@items.BookId" onclick="AddToCart(@items.BookId)">
+                        </div>
+                        <input type="button" value="ADDED TO CART" class="btn-primary" id="addedCartBtn-@items.BookId">
+
+                        <div class="wishlist">
+                            <input type="button" value="WISHLIST" class="btn-danger" id="wishBtn-@items.BookId" onclick="AddToWishList(@items.BookId)">
+                        </div>
+                        <input type="button" value="wISHLISTED" class="btn-primary" id="addedWishListBtn-@items.BookId">
+                    </div>
+                    <div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <input type="button" value="DELETE" class="btn-danger" id="deleteBtn-@items.BookId" onclick="DeleteBook(@items.BookId)">
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
