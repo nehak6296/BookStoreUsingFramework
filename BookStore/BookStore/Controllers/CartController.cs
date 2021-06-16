@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace BookStore.Controllers
 {
-    [Authorize(Roles = "Admin,Customer")]
+    //[Authorize(Roles = "Admin,Customer")]
     public class CartController : Controller
     {
         private readonly ICartManager cartManager ;

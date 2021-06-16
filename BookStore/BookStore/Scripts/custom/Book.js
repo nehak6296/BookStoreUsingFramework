@@ -75,5 +75,29 @@ function AddToWishList(bookId) {
     });
 }
 
+function DeleteBook(bookId) {
+    var deleteBook = "deleteBtn-".concat(bookId);    
+    var requestObject = {};
+    
+    requestObject.BookId = bookId;    
+    console.log(JSON.stringify(requestObject));
+    $.ajax({
+        type: "POST",
+        url: 'https://localhost:44375/Books/DeleteBook',
+        data: JSON.stringify(requestObject),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function () {
+            //Onclick AddToWishList button hide AddToCart button
+            var DeleteBookButton = document.getElementById(deleteBook);
+            DeleteBookButton.style.display = "none";
+            window.location.reload();
+        },
+        error: function () {
+            alert("Error while inserting data");
+        }
+    });
+}
+
 
 

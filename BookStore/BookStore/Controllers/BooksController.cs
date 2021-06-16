@@ -26,7 +26,7 @@ namespace BookStore.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin,Customer")]
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public ActionResult GetAllBooks(Books book)
         {

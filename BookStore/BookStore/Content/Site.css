@@ -88,6 +88,7 @@ a {
 
 .container_getbooks {
     padding: 15px 16px;
+   
 }
 
 .card_container {
@@ -142,4 +143,11 @@ a {
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+
+.book_image{
+    
+    width:20vw;
+    height:20vh;
+    padding-top:10px;
 }
